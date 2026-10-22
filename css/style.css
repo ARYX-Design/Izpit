@@ -213,3 +213,15 @@ h1, h2 { line-height: 1.2; }
   .hero h1 { font-size: 24px; }
   .stat b { font-size: 19px; }
 }
+
+/* Situatat dhe policia */
+.scene { margin: 0 auto 14px; max-width: 320px; }
+.scene > svg { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
+.scene figcaption { text-align: center; font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+.figure { width: 120px; margin: 0 auto 12px; background: #fff; border-radius: 12px; border: 1px solid var(--line); padding: 6px; }
+.figure > svg, .fig > svg { display: block; width: 100%; height: auto; }
+.review .scene { max-width: 240px; }
+.figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+.fig { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px; text-align: center; }
+.fig > svg { width: 80px; margin: 0 auto; }
+.fig span { display: block; font-size: 13px; color: #333; margin-top: 4px; }

@@ -7,6 +7,7 @@
   const CATS = window.CATEGORIES;
   const QS = window.QUESTIONS;
   const SIGNS = window.SIGNS;
+  const SCENES = window.SCENES;
   const byId = Object.fromEntries(QS.map((q) => [q.id, q]));
   const catById = Object.fromEntries(CATS.map((c) => [c.id, c]));
 
@@ -205,7 +206,13 @@
 
   function questionBlock(item, { reveal }) {
     const q = item.q;
-    const sign = q.sign && SIGNS[q.sign] ? `<div class="sign">${SIGNS[q.sign].svg}</div>` : '';
+    let sign = q.sign && SIGNS[q.sign] ? `<div class="sign">${SIGNS[q.sign].svg}</div>` : '';
+    if (q.figure) sign += `<div class="figure">${SCENES.policeFigure(q.figure)}</div>`;
+    if (q.scene) {
+      const hasA = (q.scene.cars || []).some((c) => c.label === 'A');
+      const youA = hasA && !/\bA\b/.test(q.q) ? '<figcaption>Ju drejtoni mjetin A.</figcaption>' : '';
+      sign += `<figure class="scene">${SCENES.render(q.scene)}${youA}</figure>`;
+    }
     const multi = isMulti(q);
     const options = item.order
       .map((orig, pos) => {
@@ -466,6 +473,7 @@
         <article class="card learn">
           <h2>${c.icon} ${esc(c.name)}</h2>
           <ul class="list">${c.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+          ${c.figures ? `<div class="figures">${c.figures.map((f) => `<div class="fig">${SCENES.policeFigure(f.pose)}<span>${esc(f.text)}</span></div>`).join('')}</div>` : ''}
           <a class="btn small" href="#/practice/${c.id}">Ushtro këtë temë →</a>
         </article>`).join('')}`;
   }

@@ -32,6 +32,41 @@
       ],
     },
     {
+      id: 'kryqezimet',
+      name: 'Situata në kryqëzime',
+      icon: '🚦',
+      tips: [
+        'Radha e kontrollit: polici → semafori → shenjat → rregulli i djathtës.',
+        'Pa shenja: kalon i pari ai që nuk ka asnjë mjet në të djathtën e vet.',
+        'Rregulli i djathtës vlen edhe kur ktheheni djathtas dhe edhe në kryqëzimet në formë T.',
+        'Kush kthehet majtas, u jep përparësi mjeteve përballë – edhe kur ato kthehen djathtas.',
+        'Rruga me përparësi mund të kthehet: tabela shtesë tregon me vijë të trashë drejtimin e saj.',
+        'Mjetet në rrugët pa përparësi zgjidhin radhën mes tyre me rregullin e djathtës.',
+        'Kur ktheheni djathtas, kujdes nga çiklistët që vazhdojnë drejt në të djathtën tuaj.',
+        'Kur semafori pulson të verdhë, vlejnë shenjat rrugore.',
+      ],
+    },
+    {
+      id: 'policia',
+      name: 'Polici rregullon trafikun',
+      icon: '👮',
+      tips: [
+        'Sinjalet e policit kanë përparësi ndaj semaforit, shenjave dhe rregullave të përparësisë.',
+        'Krahët e shtrirë anash: ndalen ata që e shohin policin nga përpara (gjoksi) ose nga prapa (shpina).',
+        'Ata që e shohin policin nga ana e krahëve (anash) mund të kalojnë.',
+        'Dora e ngritur lart: të gjithë ndalen – si drita e verdhë. Kush është në kryqëzim, e liron atë.',
+        'Lëvizja e krahut lart e poshtë: ngadalësoni.',
+        'Natën, lëvizja e dritës së kuqe drejt jush do të thotë: ndaluni.',
+      ],
+      figures: [
+        { pose: 'front', text: 'Krahët anash, gjoksi nga ju – ndaluni.' },
+        { pose: 'back', text: 'Krahët anash, shpina nga ju – ndaluni.' },
+        { pose: 'raised', text: 'Dora lart – të gjithë ndalen (si drita e verdhë).' },
+        { pose: 'slow', text: 'Krahu lëviz lart e poshtë – ngadalësoni.' },
+        { pose: 'baton', text: 'Drita e kuqe që lëkundet – ndaluni.' },
+      ],
+    },
+    {
       id: 'shpejtesia',
       name: 'Shpejtësia dhe distanca',
       icon: '⏱️',
@@ -414,6 +449,7 @@
     },
     {
       id: 'pe2', cat: 'perparesia',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'straight' }] },
       q: 'Po ktheheni majtas në kryqëzim. Kujt duhet t’i jepni përparësi?',
       a: [
         'Mjeteve që vijnë përballë dhe vazhdojnë drejt ose kthehen djathtas',
@@ -425,6 +461,7 @@
     },
     {
       id: 'pe3', cat: 'perparesia',
+      scene: { roundabout: true, signs: { S: 'yield' }, cars: [{ arm: 'S', label: 'A' }, { ring: 125, label: 'B' }] },
       q: 'Po hyni në rrethrrotullim me shenjën “Jepni përparësi”. Kush ka përparësi?',
       a: [
         'Mjetet që janë tashmë në rrethrrotullim',
@@ -436,6 +473,7 @@
     },
     {
       id: 'pe4', cat: 'perparesia',
+      scene: { type: 'road', lanes: ['down', 'up'], center: 'dashed', cars: [{ lane: 1, y: 120, label: 'A', move: 'right', dx: 20 }, { lane: 1, y: 235, type: 'ambulance' }] },
       q: 'Pas jush vjen një ambulancë me drita blu dhe sirenë. Çfarë bëni?',
       a: [
         'I lironi rrugën – lëvizni djathtas dhe ndaleni nëse është e nevojshme',
@@ -447,6 +485,7 @@
     },
     {
       id: 'pe5', cat: 'perparesia',
+      scene: { type: 'road', lanes: ['down', 'up'], center: 'dashed', zebra: 100, peds: [{ x: 210, y: 111 }], cars: [{ lane: 1, y: 200, label: 'A' }] },
       q: 'Një këmbësor qëndron në trotuar pranë vendkalimit dhe qartazi dëshiron të kalojë. Çfarë bëni?',
       a: [
         'Ndaleni dhe e lini të kalojë',
@@ -458,6 +497,7 @@
     },
     {
       id: 'pe6', cat: 'perparesia',
+      scene: { crosswalks: ['E'], peds: [{ arm: 'E', x: 128 }, { arm: 'E', x: 165 }], cars: [{ arm: 'S', label: 'A', turn: 'right' }] },
       q: 'Po ktheheni djathtas, ndërsa këmbësorët po kalojnë rrugën në të cilën po hyni. Çfarë bëni?',
       a: [
         'U jepni përparësi këmbësorëve',
@@ -479,7 +519,7 @@
       e: 'Në zonë të banuar, shoferët duhet t’i mundësojnë autobusit të largohet nga stacioni kur ai sinjalizon.',
     },
     {
-      id: 'pe8', cat: 'perparesia',
+      id: 'pe8', cat: 'policia', figure: 'raised',
       q: 'Polici e ngre njërën dorë vertikalisht lart. Çfarë do të thotë kjo?',
       a: [
         'Kujdes, ndaleni – përveç atyre që janë tashmë në kryqëzim, të cilët e lirojnë atë',
@@ -502,6 +542,7 @@
     },
     {
       id: 'pe10', cat: 'perparesia',
+      scene: { type: 'road', lanes: ['up', 'up'], endLane: { lane: 0, y: 110 }, cars: [{ lane: 0, y: 140, label: 'A', move: 'right', dx: 30 }, { lane: 1, y: 175, label: 'B' }, { lane: 0, y: 215 }, { lane: 1, y: 250 }] },
       q: 'Një korsi mbaron dhe dy korsi bashkohen në një, ndërsa trafiku është i ngadaltë. Si veproni?',
       a: [
         'Mjetet bashkohen një nga një në fund të korsisë që mbaron (parimi i zinxhirit)',
@@ -513,6 +554,7 @@
     },
     {
       id: 'pe11', cat: 'perparesia',
+      scene: { type: 'road', lanes: ['down', 'up'], center: 'dashed', cars: [{ lane: 1, y: 125, color: '#9e9e9e' }, { lane: 1, y: 230, label: 'A' }, { lane: 0, y: 45, label: 'B' }] },
       q: 'Në korsinë tuaj ka një makinë të parkuar, ndërsa përballë vjen një mjet. Kush ka përparësi?',
       a: [
         'Mjeti përballë – ju duhet ta lini të kalojë, sepse pengesa është në anën tuaj',
@@ -535,6 +577,7 @@
     },
     {
       id: 'pe13', cat: 'perparesia',
+      scene: { lights: { S: 'green' }, cars: [{ arm: 'S', label: 'A' }, { at: [170, 88, 0], color: '#8d8d8d' }, { at: [170, 36, 0], color: '#8d8d8d' }, { at: [170, 135, 0], color: '#8d8d8d' }] },
       q: 'Keni dritë jeshile, por pas kryqëzimit trafiku është i bllokuar. Çfarë bëni?',
       a: [
         'Prisni para kryqëzimit derisa të ketë vend për ta liruar kryqëzimin',
@@ -546,6 +589,7 @@
     },
     {
       id: 'pe14', cat: 'perparesia',
+      scene: { signs: { S: 'priority', N: 'priority', W: 'yield', E: 'yield' }, cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'straight' }] },
       q: 'Jeni në rrugë me përparësi dhe ktheheni majtas. Përballë vjen një makinë që vazhdon drejt. Kush ka përparësi?',
       a: [
         'Makina përballë që vazhdon drejt',
@@ -958,6 +1002,7 @@
     // ---------------- SJELLJA NË RRUGË ----------------
     {
       id: 'sj1', cat: 'sjellja',
+      scene: { type: 'road', lanes: ['down', 'up'], center: 'dashed', cars: [{ lane: 1, y: 95, type: 'tractor' }, { lane: 1, y: 210, label: 'A', move: 'left' }] },
       q: 'Nga cila anë parakalohet zakonisht?',
       a: ['Nga e majta', 'Nga e djathta', 'Nga cilado anë që ka vend'],
       c: [0],
@@ -999,6 +1044,7 @@
     },
     {
       id: 'sj5', cat: 'sjellja',
+      scene: { type: 'road', lanes: ['up', 'up'], cars: [{ lane: 0, y: 200, label: 'A', move: 'right' }, { lane: 1, y: 70, color: '#8d8d8d' }] },
       q: 'Në rrugë me dy korsi në të njëjtin drejtim (jashtë zonës së banuar), cilën korsi përdorni zakonisht?',
       a: [
         'Korsinë e djathtë; të majtën vetëm për parakalim',
@@ -1010,6 +1056,7 @@
     },
     {
       id: 'sj6', cat: 'sjellja',
+      scene: { roundabout: true, cars: [{ ring: 60, label: 'A', blink: 'right' }] },
       q: 'Kur e sinjalizoni djathtas në rrethrrotullim?',
       a: [
         'Kur dilni nga rrethrrotullimi',
@@ -1249,6 +1296,7 @@
     },
     {
       id: 'au4', cat: 'autostrada',
+      scene: { type: 'road', lanes: ['up', 'up'], shoulder: true, cars: [{ lane: 0, y: 110, label: 'A', move: 'left', dx: 12 }, { lane: 1, y: 110, label: 'B', move: 'right', dx: 12 }, { lane: 0, y: 185, color: '#8d8d8d' }, { lane: 1, y: 185, color: '#8d8d8d' }, { x: 135, y: 268, rot: 0, type: 'ambulance' }] },
       q: 'Në autostradë me dy korsi trafiku ngadalësohet në kolonë. Si krijohet korridori i emergjencës?',
       a: [
         'Mjetet në korsinë e majtë lëvizin majtas, ato në korsinë e djathtë lëvizin djathtas',
@@ -1361,6 +1409,263 @@
       c: [0, 1, 2],
       e: 'Në akull rruga e frenimit mund të jetë disa herë më e gjatë. Gomat dimërore ndihmojnë, por nuk e eliminojnë rrezikun.',
     },
+    // ---------------- SITUATA NË KRYQËZIME ----------------
+    {
+      id: 'kr1', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'E', label: 'B', turn: 'straight' }] },
+      q: 'Kryqëzim pa shenja dhe pa semafor. Cili mjet kalon i pari?',
+      a: ['Mjeti B', 'Mjeti A'],
+      c: [0],
+      e: 'Vlen rregulli i djathtës. Për mjetin A, mjeti B vjen nga e djathta, prandaj B kalon i pari.',
+    },
+    {
+      id: 'kr2', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'straight' }] },
+      q: 'Kryqëzim pa shenja. Mjeti A kthehet majtas, mjeti B vazhdon drejt. Cili kalon i pari?',
+      a: ['Mjeti B', 'Mjeti A', 'Ai që arrin i pari'],
+      c: [0],
+      e: 'Kush kthehet majtas, u jep përparësi mjeteve që vijnë nga drejtimi i kundërt. B kalon i pari.',
+    },
+    {
+      id: 'kr3', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight' }, { arm: 'E', label: 'C', turn: 'straight' }] },
+      q: 'Kryqëzim pa shenja. Cila është radha e kalimit?',
+      a: ['C, A, B', 'A, B, C', 'B, A, C', 'C, B, A'],
+      c: [0],
+      e: 'C nuk ka asnjë mjet në të djathtën e vet, prandaj kalon i pari. Pastaj A (C ka kaluar, nga e djathta nuk ka më njeri). B e ka A-në në të djathtë, prandaj kalon i fundit.',
+    },
+    {
+      id: 'kr4', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'right' }, { arm: 'W', label: 'B', turn: 'straight' }] },
+      q: 'Kryqëzim pa shenja. A kthehet djathtas, B vazhdon drejt. Të dy hyjnë në të njëjtën rrugë. Kush kalon i pari?',
+      a: ['Mjeti A', 'Mjeti B'],
+      c: [0],
+      e: 'Rregulli i djathtës vlen edhe kur dikush kthehet djathtas. Mjeti A është në të djathtën e B-së, prandaj B duhet të presë.',
+    },
+    {
+      id: 'kr5', cat: 'kryqezimet',
+      scene: { signs: { S: 'yield', N: 'yield', W: 'priority', E: 'priority' }, cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight' }] },
+      q: 'Mjeti A ka shenjën “Jepni përparësi”, mjeti B është në rrugën me përparësi. Kush kalon i pari?',
+      a: ['Mjeti B', 'Mjeti A, sepse B vjen nga e majta'],
+      c: [0],
+      e: 'Shenjat kanë përparësi ndaj rregullit të djathtës. B është në rrugën me përparësi dhe kalon i pari, edhe pse vjen nga e majta e A-së.',
+    },
+    {
+      id: 'kr6', cat: 'kryqezimet',
+      scene: { signs: { S: 'priority', N: 'priority', W: 'yield', E: 'yield' }, cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'straight' }, { arm: 'W', label: 'C', turn: 'straight' }] },
+      q: 'A dhe B janë në rrugën me përparësi, C ka shenjën “Jepni përparësi”. Cila është radha e kalimit?',
+      a: ['B, A, C', 'A, B, C', 'C, B, A', 'B, C, A'],
+      c: [0],
+      e: 'C në rrugën anësore pret të fundit. Mes A-së dhe B-së, që janë të dy në rrugën me përparësi, A kthehet majtas dhe ia lë përparësinë B-së që vjen përballë.',
+    },
+    {
+      id: 'kr7', cat: 'kryqezimet',
+      scene: { main: ['S', 'W'], signs: { S: 'priority', W: 'priority', N: 'yield', E: 'yield' }, cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'straight' }, { arm: 'E', label: 'C', turn: 'straight' }] },
+      q: 'Rruga me përparësi kthehet (shih tabelën shtesë me vijë të trashë). Cila është radha e kalimit?',
+      a: ['A, B, C', 'B, C, A', 'A, C, B', 'C, B, A'],
+      c: [0],
+      e: 'A ndjek rrugën me përparësi dhe kalon i pari. B dhe C janë në rrugë pa përparësi, prandaj radhën mes tyre e zgjidh rregulli i djathtës: B është në të djathtën e C-së, prandaj B kalon para C-së.',
+    },
+    {
+      id: 'kr8', cat: 'kryqezimet',
+      scene: { signs: { S: 'stop', N: 'stop', W: 'priority', E: 'priority' }, cars: [{ arm: 'S', label: 'A', turn: 'right' }, { arm: 'W', label: 'B', turn: 'straight' }] },
+      q: 'Mjeti A ka shenjën STOP dhe kthehet djathtas. Mjeti B vjen nga e majta në rrugën me përparësi. Çfarë bën A?',
+      a: [
+        'Ndalet plotësisht te vija e ndalimit dhe e lë B-në të kalojë',
+        'Kthehet djathtas pa u ndalur, sepse nuk e kryqëzon rrugën e B-së',
+        'Ndalet vetëm nëse B është shumë afër',
+      ],
+      c: [0],
+      e: 'Te shenja STOP ndalimi është gjithmonë i detyrueshëm. Duke u kthyer djathtas, A hyn në korsinë ku vazhdon B, prandaj duhet të presë.',
+    },
+    {
+      id: 'kr9', cat: 'kryqezimet',
+      scene: { lights: { S: 'green', N: 'green', W: 'red', E: 'red' }, cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'straight' }] },
+      q: 'Të dy mjetet kanë dritë jeshile. A kthehet majtas, B vazhdon drejt. Kush kalon i pari?',
+      a: ['Mjeti B', 'Mjeti A', 'Të dy njëkohësisht'],
+      c: [0],
+      e: 'Drita jeshile nuk i jep A-së përparësi ndaj mjeteve përballë. Kur ktheheni majtas, prisni në kryqëzim derisa të kalojë B.',
+    },
+    {
+      id: 'kr10', cat: 'kryqezimet',
+      scene: { lights: { S: 'green' }, crosswalks: ['E'], peds: [{ arm: 'E', x: 160 }], cars: [{ arm: 'S', label: 'A', turn: 'right' }] },
+      q: 'Mjeti A ka dritë jeshile dhe kthehet djathtas. Në vendkalim po kalon një këmbësor. Kush ka përparësi?',
+      a: ['Këmbësori', 'Mjeti A, sepse ka dritë jeshile', 'Ai që arrin i pari'],
+      c: [0],
+      e: 'Kur ktheheni, u jepni përparësi këmbësorëve që kalojnë rrugën ku po hyni – edhe kur keni dritë jeshile.',
+    },
+    {
+      id: 'kr11', cat: 'kryqezimet',
+      scene: { lights: { S: 'blink', N: 'blink', W: 'blink', E: 'blink' }, signs: { S: 'yield', N: 'yield', W: 'priority', E: 'priority' }, cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight' }] },
+      q: 'Semaforët pulsojnë të verdhë. Kush kalon i pari?',
+      a: ['Mjeti B, sipas shenjave', 'Mjeti A, sipas rregullit të djathtës', 'Të dy duhet të presin dritën jeshile'],
+      c: [0],
+      e: 'Kur semafori pulson të verdhë, ai nuk e rregullon trafikun – vlejnë shenjat. A ka shenjën “Jepni përparësi”, prandaj B kalon i pari.',
+    },
+    {
+      id: 'kr12', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight', type: 'ambulance' }] },
+      q: 'Kryqëzim pa shenja. Mjeti B është ambulancë me drita blu dhe sirenë të ndezur. Kush kalon i pari?',
+      a: ['Ambulanca (B)', 'Mjeti A, sepse B vjen nga e majta'],
+      c: [0],
+      e: 'Mjetet e urgjencës me sinjale blu dhe zanore kanë përparësi ndaj të gjithëve, pavarësisht rregullit të djathtës.',
+    },
+    {
+      id: 'kr13', cat: 'kryqezimet',
+      scene: { arms: ['S', 'N', 'W'], cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'left' }] },
+      q: 'Kryqëzim në formë T, pa shenja. A vazhdon drejt, B kthehet majtas. Kush kalon i pari?',
+      a: ['Mjeti A', 'Mjeti B'],
+      c: [0],
+      e: 'Edhe në kryqëzimet T pa shenja vlen rregulli i djathtës – rruga që vazhdon drejt nuk ka përparësi vetvetiu. A është në të djathtën e B-së.',
+    },
+    {
+      id: 'kr14', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight' }, { arm: 'N', label: 'C', turn: 'straight' }, { arm: 'E', label: 'D', turn: 'straight' }] },
+      q: 'Në kryqëzim pa shenja arrijnë njëkohësisht katër mjete nga katër anët. Si zgjidhet situata?',
+      a: [
+        'Shoferët merren vesh me shenja; njëri heq dorë nga përparësia dhe pastaj vlen rregulli i djathtës',
+        'Kalon mjeti më i madh',
+        'Kalojnë të gjithë njëkohësisht, ngadalë',
+      ],
+      c: [0],
+      e: 'Secili ka dikë në të djathtë, prandaj rregulli i djathtës nuk e zgjidh situatën. Njëri shofer duhet ta lërë tjetrin të kalojë, e pastaj radha vazhdon sipas rregullit të djathtës.',
+    },
+    {
+      id: 'kr15', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'N', label: 'B', turn: 'right' }] },
+      q: 'Kryqëzim pa shenja. A kthehet majtas, B (përballë) kthehet djathtas në të njëjtën rrugë. Kush kalon i pari?',
+      a: ['Mjeti B', 'Mjeti A'],
+      c: [0],
+      e: 'Kush kthehet majtas, u jep përparësi të gjitha mjeteve përballë – edhe atyre që kthehen djathtas.',
+    },
+    {
+      id: 'kr16', cat: 'kryqezimet',
+      scene: { cars: [{ arm: 'S', label: 'A', turn: 'right' }, { at: [184, 206, 0], label: 'B', type: 'bike' }] },
+      q: 'Mjeti A kthehet djathtas. Në të djathtën e tij, çiklisti B vazhdon drejt. Çfarë bën A?',
+      a: [
+        'Kontrollon pasqyrën dhe këndin e vdekur dhe e lë çiklistin të kalojë',
+        'Kthehet, sepse çiklisti duhet ta shohë sinjalin',
+        'I bie borisë dhe kthehet',
+      ],
+      c: [0],
+      e: 'Çiklisti që vazhdon drejt ka përparësi ndaj mjetit që kthehet djathtas. Para kthimit kontrolloni pasqyrën dhe këndin e vdekur.',
+    },
+    {
+      id: 'kr17', cat: 'kryqezimet',
+      scene: { roundabout: true, signs: { S: 'yield', W: 'yield', N: 'yield', E: 'yield' }, cars: [{ arm: 'S', label: 'A' }, { arm: 'W', label: 'B' }, { ring: 200, label: 'C' }] },
+      q: 'A dhe B duan të hyjnë në rrethrrotullim, ndërsa C qarkullon tashmë në të. Kush kalon i pari?',
+      a: ['Mjeti C', 'Mjeti B', 'Mjeti A'],
+      c: [0],
+      e: 'Mjetet në rrethrrotullim kanë përparësi. Mjeti B duhet t’ia lërë rrugën C-së që i afrohet nga e majta.',
+    },
+
+    // ---------------- POLICI RREGULLON TRAFIKUN ----------------
+    {
+      id: 'po1', cat: 'policia',
+      scene: { police: { facing: 'S', arms: 'out' }, cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight' }, { arm: 'E', label: 'C', turn: 'straight' }] },
+      q: 'Polici qëndron me krahë të shtrirë anash, me gjoks nga mjeti A. Cilat mjete mund të kalojnë? (Zgjidhni të gjitha përgjigjet e sakta)',
+      a: ['Mjeti A', 'Mjeti B', 'Mjeti C'],
+      c: [1, 2],
+      e: 'Kur polici ka krahët të shtrirë, kalojnë ata që vijnë nga ana e krahëve (B dhe C). Ata që e shohin nga përpara ose nga prapa (A) ndalen.',
+    },
+    {
+      id: 'po2', cat: 'policia',
+      scene: { police: { facing: 'E', arms: 'out' }, cars: [{ arm: 'S', label: 'A', turn: 'straight' }] },
+      q: 'Polici ka krahët të shtrirë drejt jush (ju e shihni nga ana). A mund të kalojë mjeti A?',
+      a: ['Po, mund të kalojë', 'Jo, duhet të ndalet', 'Vetëm nëse kthehet djathtas'],
+      c: [0],
+      e: 'Kur e shihni policin nga ana e krahëve të shtrirë, keni kalim të lirë – si te drita jeshile.',
+    },
+    {
+      id: 'po3', cat: 'policia',
+      scene: { police: { facing: 'S', arms: 'out' }, cars: [{ arm: 'N', label: 'A', turn: 'straight' }] },
+      q: 'Mjeti A i afrohet policit nga prapa (e sheh shpinën e tij). Polici ka krahët të shtrirë anash. Çfarë bën A?',
+      a: ['Ndalet', 'Kalon, sepse polici nuk po e sheh', 'Kthehet djathtas pa u ndalur'],
+      c: [0],
+      e: 'Shpina e policit ka të njëjtin kuptim si gjoksi: ndalim (si drita e kuqe).',
+    },
+    {
+      id: 'po4', cat: 'policia',
+      scene: { inset: 'raised', police: { facing: 'S', arms: 'none' }, cars: [{ arm: 'S', label: 'A' }, { at: [180, 114, 0], label: 'B' }] },
+      q: 'Polici e ngre dorën lart. A është ende para kryqëzimit, ndërsa B është tashmë brenda tij. Çfarë duhet të bëjnë?',
+      a: ['A ndalet, B e liron kryqëzimin', 'Të dy ndalen menjëherë aty ku janë', 'Të dy vazhdojnë'],
+      c: [0],
+      e: 'Dora e ngritur lart është si drita e verdhë: kush është para kryqëzimit ndalet, kush është tashmë brenda e liron kryqëzimin.',
+    },
+    {
+      id: 'po5', cat: 'policia',
+      scene: { lights: { S: 'red', N: 'red', W: 'green', E: 'green' }, police: { facing: 'E', arms: 'out' }, cars: [{ arm: 'S', label: 'A', turn: 'straight' }] },
+      q: 'Semafori i mjetit A tregon të kuqe, por polici në kryqëzim qëndron me krah drejt A-së (A e sheh anash). Çfarë bën A?',
+      a: ['Kalon, sepse sinjalet e policit kanë përparësi ndaj semaforit', 'Pret dritën jeshile', 'Kalon vetëm nëse polici i bie bilbilit'],
+      c: [0],
+      e: 'Udhëzimet e policit kanë përparësi ndaj semaforit dhe shenjave. A e sheh policin anash, pra ka kalim të lirë.',
+    },
+    {
+      id: 'po6', cat: 'policia',
+      scene: { police: { facing: 'S', arms: 'out' }, signs: { S: 'priority', N: 'priority', W: 'yield', E: 'yield' }, cars: [{ arm: 'S', label: 'A', turn: 'straight' }, { arm: 'W', label: 'B', turn: 'straight' }] },
+      q: 'Mjeti A është në rrugën me përparësi, B ka shenjën “Jepni përparësi”. Polici ka gjoksin nga A dhe krahët drejt B-së. Kush kalon?',
+      a: ['Mjeti B', 'Mjeti A, sepse është në rrugën me përparësi', 'Asnjëri'],
+      c: [0],
+      e: 'Sinjalet e policit kanë përparësi ndaj shenjave. B e sheh policin anash dhe kalon; A e sheh nga përpara dhe ndalet.',
+    },
+    {
+      id: 'po7', cat: 'policia', figure: 'front',
+      q: 'Polici qëndron përballë jush me të dy krahët të shtrirë anash. Çfarë bëni?',
+      a: ['Ndaleni', 'Vazhdoni drejt', 'Ktheheni djathtas pa u ndalur'],
+      c: [0],
+      e: 'Kur e shihni policin nga përpara (gjoksi) me krahë anash, duhet të ndaleni – si te drita e kuqe.',
+    },
+    {
+      id: 'po8', cat: 'policia', figure: 'back',
+      q: 'Polici qëndron me shpinë nga ju, me krahët të shtrirë anash. Çfarë bëni?',
+      a: ['Ndaleni', 'Kaloni pranë tij', 'I bini borisë që të kthehet'],
+      c: [0],
+      e: 'Shpina e policit me krahë anash ka kuptimin e dritës së kuqe për ju.',
+    },
+    {
+      id: 'po9', cat: 'policia', figure: 'slow',
+      q: 'Polici lëviz krahun e shtrirë lart e poshtë. Çfarë do të thotë kjo?',
+      a: ['Ngadalësoni', 'Përshpejtoni', 'Ndaluni dhe fikni motorin'],
+      c: [0],
+      e: 'Lëvizja e krahut lart e poshtë (me pëllëmbën poshtë) do të thotë: zvogëloni shpejtësinë.',
+    },
+    {
+      id: 'po10', cat: 'policia', figure: 'baton',
+      q: 'Natën, polici lëkund një dritë të kuqe drejt jush. Çfarë bëni?',
+      a: ['Ndaleni', 'Vazhdoni me kujdes', 'Ndizni dritat e gjata që ta shihni më mirë'],
+      c: [0],
+      e: 'Drita e kuqe e lëkundur drejt pjesëmarrësit do të thotë ndalim.',
+    },
+    {
+      id: 'po11', cat: 'policia',
+      q: 'Policia ju jep shenjë të ndaleni gjatë drejtimit. Si veproni?',
+      a: [
+        'Ndaleni në vend të sigurt sa më djathtas, qëndroni në makinë dhe ndiqni udhëzimet',
+        'Vazhdoni deri te vendi i ardhshëm i parkimit, edhe nëse është larg',
+        'Dilni menjëherë nga makina dhe shkoni drejt policit',
+      ],
+      c: [0],
+      e: 'Ndaleni menjëherë në vend të sigurt, mbani duart të dukshme (p.sh. në timon) dhe kini gati patentën dhe dokumentet e mjetit.',
+    },
+
+    // ---------------- SITUATA NË RRUGË ----------------
+    {
+      id: 'sj14', cat: 'sjellja',
+      scene: { type: 'road', lanes: ['down', 'up'], center: 'solid', cars: [{ lane: 1, y: 95, type: 'tractor' }, { lane: 1, y: 210, label: 'A' }] },
+      q: 'Mjeti A ndodhet pas një traktori të ngadaltë. Mes korsive ka vijë të plotë. A lejohet A të parakalojë?',
+      a: ['Jo, vija e plotë nuk guxon të kalohet', 'Po, nëse nuk vjen askush përballë', 'Po, sepse traktori është i ngadaltë'],
+      c: [0],
+      e: 'Vija e plotë nuk guxon të kalohet as të shkelet. Prisni derisa vija të bëhet e ndërprerë dhe parakalimi të jetë i sigurt.',
+    },
+    {
+      id: 'au14', cat: 'autostrada',
+      scene: { type: 'road', lanes: ['up', 'up', 'up'], shoulder: true, cars: [{ lane: 0, y: 115, label: 'A', move: 'left', dx: 12 }, { lane: 1, y: 115, label: 'B', move: 'right', dx: 12 }, { lane: 2, y: 115, label: 'C', move: 'right', dx: 12 }, { x: 113, y: 265, rot: 0, type: 'ambulance' }] },
+      q: 'Autostradë me tri korsi, trafiku ngadalësohet. Si krijohet korridori i emergjencës?',
+      a: ['A lëviz majtas, B dhe C lëvizin djathtas', 'A dhe B lëvizin majtas, C djathtas', 'Të gjithë lëvizin djathtas në korsinë e emergjencës'],
+      c: [0],
+      e: 'Korridori i emergjencës krijohet gjithmonë mes korsisë më të majtë dhe korsive të tjera. Korsia e emergjencës mbetet e lirë.',
+    },
+
   ];
 
   window.CATEGORIES = CATEGORIES;

@@ -1,10 +1,11 @@
 // Service worker: ruan skedarët që aplikacioni të punojë edhe pa internet.
-const CACHE = 'patenta-v1';
+const CACHE = 'patenta-v2';
 const FILES = [
   './',
   'index.html',
   'css/style.css',
   'js/signs.js',
+  'js/scenes.js',
   'js/questions.js',
   'js/app.js',
   'manifest.webmanifest',

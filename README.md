@@ -7,7 +7,8 @@ Aplikacion në gjuhën shqipe për t’u përgatitur për provimin teorik të pa
 sipas rregullave të trafikut në Slloveni.
 
 ## Funksionet / Funkcije
-- **116 pyetje** në 8 kategori, secila me shpjegim (shenjat, përparësia, shpejtësia, alkooli, mjeti, sjellja, ndihma e parë, autostrada)
+- **146 pyetje** në 10 kategori, secila me shpjegim (shenjat, përparësia, situata në kryqëzime, polici rregullon trafikun, shpejtësia, alkooli, mjeti, sjellja, ndihma e parë, autostrada)
+- **38 situata të ilustruara** (kryqëzime nga lart, rrethrrotullime, rrugë, korridori i emergjencës) dhe **sinjalet e policit**
 - **22 shenja rrugore** të vizatuara (SVG) me përshkrime
 - **Simulim provimi**: 30 pyetje, 30 minuta, kalohet me 90%
 - **Gabimet e mia**: përsëritja e pyetjeve të gabuara
@@ -27,6 +28,17 @@ Objaviš jo lahko na GitHub Pages (Settings → Pages → Deploy from branch).
 
 ## Dodajanje vprašanj
 Vprašanja so v `js/questions.js` (`c` = indeksi pravilnih odgovorov; več indeksov = več pravilnih odgovorov).
-Prometni znaki so v `js/signs.js`.
+Prometni znaki so v `js/signs.js`, situacije (križišča, ceste, policist) pa v `js/scenes.js`.
+Vprašanju dodaš sliko situacije s poljem `scene`, npr.:
+
+```js
+scene: {
+  signs: { S: 'yield', W: 'priority' },        // znaki po krakih (N, S, E, W)
+  lights: { S: 'green' },                      // semafor: red | yellow | green | blink
+  police: { facing: 'S', arms: 'out' },        // policist v križišču
+  cars: [{ arm: 'S', label: 'A', turn: 'left' }, { arm: 'W', label: 'B', turn: 'straight' }],
+}
+```
+Druge možnosti: `roundabout: true`, `arms: ['S','N','W']` (T-križišče), `main: ['S','W']` (dopolnilna tabla), `crosswalks`, `peds`, `type: 'road'` (odsek ceste). Gibe policista prikaže polje `figure: 'front' | 'back' | 'raised' | 'slow' | 'baton'`.
 
 > Aplikacija je namenjena vadbi in ne nadomešča avtošole ali uradnih gradiv.
