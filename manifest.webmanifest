@@ -1,0 +1,14 @@
+{
+  "name": "Patenta – Mëso për provimin",
+  "short_name": "Patenta",
+  "description": "Përgatitje për provimin teorik të patentës në gjuhën shqipe.",
+  "lang": "sq",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#1d5fb4",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
