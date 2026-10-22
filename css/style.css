@@ -129,7 +129,7 @@ h1, h2 { line-height: 1.2; }
 }
 .card h2 { margin: 0 0 10px; font-size: 18px; }
 .sign { width: 120px; margin: 0 auto 12px; }
-.sign svg, .logo svg, .sg svg { display: block; width: 100%; height: auto; }
+.sign img, .logo img, .sg img { display: block; width: 100%; height: auto; max-height: 150px; object-fit: contain; }
 .question { font-size: 18px; font-weight: 600; margin: 0 0 6px; }
 .hint { font-size: 13.5px; color: var(--mid); margin: 0 0 6px; font-weight: 600; }
 .opts { display: grid; gap: 8px; margin-top: 12px; }
@@ -201,11 +201,12 @@ h1, h2 { line-height: 1.2; }
 .signcard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow); }
 .signcard summary { list-style: none; cursor: pointer; text-align: center; }
 .signcard summary::-webkit-details-marker { display: none; }
-.signcard .sg { display: block; width: 72px; margin: 4px auto 8px; transition: width .2s; }
+.signcard .sg { display: block; width: 72px; height: 72px; margin: 4px auto 8px; transition: width .2s, height .2s; }
+.signcard .sg img { height: 100%; }
 .signcard .sn { font-weight: 600; font-size: 14px; }
 .signcard p { font-size: 14px; color: var(--muted); margin: 8px 0 0; }
 .signcard[open] { grid-column: 1 / -1; }
-.signcard[open] .sg { width: 140px; }
+.signcard[open] .sg { width: 140px; height: 140px; }
 
 .learn h2 { font-size: 18px; }
 

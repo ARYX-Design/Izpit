@@ -7,9 +7,9 @@ Aplikacion në gjuhën shqipe për t’u përgatitur për provimin teorik të pa
 sipas rregullave të trafikut në Slloveni.
 
 ## Funksionet / Funkcije
-- **146 pyetje** në 10 kategori, secila me shpjegim (shenjat, përparësia, situata në kryqëzime, polici rregullon trafikun, shpejtësia, alkooli, mjeti, sjellja, ndihma e parë, autostrada)
+- **157 pyetje** në 10 kategori, secila me shpjegim (shenjat, përparësia, situata në kryqëzime, polici rregullon trafikun, shpejtësia, alkooli, mjeti, sjellja, ndihma e parë, autostrada)
 - **38 situata të ilustruara** (kryqëzime nga lart, rrethrrotullime, rrugë, korridori i emergjencës) dhe **sinjalet e policit**
-- **22 shenja rrugore** të vizatuara (SVG) me përshkrime
+- **42 shenja rrugore zyrtare** (SVG) me përshkrime
 - **Simulim provimi**: 30 pyetje, 30 minuta, kalohet me 90%
 - **Gabimet e mia**: përsëritja e pyetjeve të gabuara
 - **Mëso teorinë**: rregullat kryesore shkurt
@@ -28,7 +28,7 @@ Objaviš jo lahko na GitHub Pages (Settings → Pages → Deploy from branch).
 
 ## Dodajanje vprašanj
 Vprašanja so v `js/questions.js` (`c` = indeksi pravilnih odgovorov; več indeksov = več pravilnih odgovorov).
-Prometni znaki so v `js/signs.js`, situacije (križišča, ceste, policist) pa v `js/scenes.js`.
+Seznam znakov je v `js/signs.js` (datoteke v `img/znaki/`), situacije (križišča, ceste, policist) pa v `js/scenes.js`.
 Vprašanju dodaš sliko situacije s poljem `scene`, npr.:
 
 ```js
@@ -42,3 +42,9 @@ scene: {
 Druge možnosti: `roundabout: true`, `arms: ['S','N','W']` (T-križišče), `main: ['S','W']` (dopolnilna tabla), `crosswalks`, `peds`, `type: 'road'` (odsek ceste). Gibe policista prikaže polje `figure: 'front' | 'back' | 'raised' | 'slow' | 'baton'`.
 
 > Aplikacija je namenjena vadbi in ne nadomešča avtošole ali uradnih gradiv.
+
+## Prometni znaki – vir in licenca
+Znaki v `img/znaki/` so uradni prometni znaki (avstrijski StVO in poljski, po Dunajski konvenciji – enaki slovenskim)
+iz kataloga [OSM Traffic Sign Tool](https://github.com/osmberlin/osm-traffic-sign-tool) (paket `@osm-traffic-signs/converter`),
+izvorno z OpenStreetMap Wiki / Wikimedia Commons. Licenca: **Public Domain**.
+Znak za avtocesto je prebarvan v zeleno, kot v Sloveniji; pri Andrejevem križu je odstranjena podlaga.

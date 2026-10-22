@@ -435,6 +435,85 @@
       e: 'Drita e verdhë e qëndrueshme do të thotë ndalim. Vazhdoni vetëm nëse ndalimi do të ishte i rrezikshëm (p.sh. jeni shumë afër vijës).',
     },
 
+    // ---------------- SHENJA TË TJERA ----------------
+    {
+      id: 'sh27', cat: 'shenjat', sign: 'yieldOncoming',
+      q: 'Çfarë do të thotë kjo shenjë?',
+      a: ['Duhet t’u jepni përparësi mjeteve nga përballë në pjesën e ngushtë', 'Keni përparësi ndaj mjeteve nga përballë', 'Ndalohet parakalimi'],
+      c: [0],
+      e: 'Shigjeta e kuqe (drejtimi i kundërt) është më e madhe: mjetet nga përballë kanë përparësi. Prisni para pjesës së ngushtë.',
+    },
+    {
+      id: 'sh28', cat: 'shenjat', sign: 'priorityOncoming',
+      q: 'Çfarë do të thotë kjo shenjë?',
+      a: ['Keni përparësi ndaj mjeteve nga përballë në pjesën e ngushtë', 'Rrugë njëkahëshe', 'Duhet t’u jepni përparësi mjeteve nga përballë'],
+      c: [0],
+      e: 'Shigjeta e bardhë (drejtimi juaj) është më e madhe: ju keni përparësi. Megjithatë kini kujdes nëse tjetri nuk ju lë.',
+    },
+    {
+      id: 'sh29', cat: 'shenjat', sign: 'noUTurn',
+      q: 'Çfarë ndalon kjo shenjë?',
+      a: ['Kthimin në U', 'Kthimin majtas', 'Parakalimin'],
+      c: [0],
+      e: 'Shenja ndalon kthimin e mjetit në drejtimin e kundërt (kthimi në U).',
+    },
+    {
+      id: 'sh30', cat: 'shenjat', sign: 'endNoOvertaking',
+      q: 'Çfarë do të thotë kjo shenjë?',
+      a: ['Fundi i ndalimit të parakalimit', 'Ndalohet parakalimi për kamionët', 'Fundi i autostradës'],
+      c: [0],
+      e: 'Shenjat e fundit të ndalimit janë të bardha me vija të zeza të pjerrëta. Kjo përfundon ndalimin e parakalimit.',
+    },
+    {
+      id: 'sh31', cat: 'shenjat', sign: 'endSpeed',
+      q: 'Pas kësaj shenje jashtë zonës së banuar, sa është shpejtësia më e lartë e lejuar për makinë (në rrugë të zakonshme)?',
+      a: ['90 km/h – vlen kufiri i përgjithshëm', '30 km/h', 'Nuk ka më kufizim'],
+      c: [0],
+      e: 'Shenja përfundon kufizimin e shpejtësisë. Vlen përsëri kufiri i përgjithshëm – jashtë zonës së banuar 90 km/h.',
+    },
+    {
+      id: 'sh32', cat: 'shenjat', sign: 'roundaboutAhead',
+      q: 'Çfarë ju paralajmëron kjo shenjë?',
+      a: ['Përpara është kryqëzim me qarkullim rrethor (rrethrrotullim)', 'Rrugë me kthesa', 'Ndalohet kthimi në U'],
+      c: [0],
+      e: 'Shenja e rrezikut paralajmëron se përpara është rrethrrotullim. Ngadalësoni; mjetet në rreth kanë përparësi.',
+    },
+    {
+      id: 'sh33', cat: 'shenjat', sign: 'railwayNoBarrier',
+      q: 'Çfarë ju paralajmëron kjo shenjë?',
+      a: ['Kalim hekurudhor pa barriera', 'Kalim hekurudhor me barriera', 'Stacion treni'],
+      c: [0],
+      e: 'Lokomotiva në trekëndësh paralajmëron për kalim hekurudhor pa barriera. Ngadalësoni dhe shikoni nga të dyja anët.',
+    },
+    {
+      id: 'sh34', cat: 'shenjat', sign: 'railwayBarrier',
+      q: 'Çfarë ju paralajmëron kjo shenjë?',
+      a: ['Kalim hekurudhor me barriera', 'Kalim hekurudhor pa barriera', 'Ndalohet hyrja'],
+      c: [0],
+      e: 'Gardhi në trekëndësh paralajmëron për kalim hekurudhor me barriera. Kur barrierat ulen ose dritat e kuqe pulsojnë, ndaluni.',
+    },
+    {
+      id: 'sh35', cat: 'shenjat', sign: 'snowChains',
+      q: 'Çfarë kërkon nga ju kjo shenjë?',
+      a: ['Të keni zinxhirë dëbore të vendosur në rrotat lëvizëse', 'Të keni vetëm goma dimërore', 'Të ngadalësoni në 30 km/h'],
+      c: [0],
+      e: 'Shenja e detyrimit (rreth blu) urdhëron vendosjen e zinxhirëve të borës.',
+    },
+    {
+      id: 'sh36', cat: 'shenjat', sign: 'livingStreet',
+      q: 'Hyni në zonën me këtë shenjë. Si drejtoni?',
+      a: ['Me shpejtësi deri në 10 km/h; këmbësorët mund të përdorin gjithë rrugën', 'Me 30 km/h, këmbësorët vetëm në trotuar', 'Me 50 km/h, si në zonë të banuar'],
+      c: [0],
+      e: 'Në zonën e trafikut të qetësuar këmbësorët dhe fëmijët mund të përdorin gjithë rrugën. Shpejtësia nuk guxon ta kalojë 10 km/h.',
+    },
+    {
+      id: 'sh37', cat: 'shenjat', sign: 'pedestrianAhead',
+      q: 'Çfarë dallimi ka kjo shenjë nga shenja blu “Vendkalim për këmbësorë”?',
+      a: ['Kjo paralajmëron paraprakisht për vendkalimin; shenja blu e shënon vetë vendkalimin', 'Kjo ndalon kalimin e këmbësorëve', 'Nuk ka dallim'],
+      c: [0],
+      e: 'Shenjat e rrezikut (trekëndësh) vendosen para vendit të rrezikshëm. Shenja blu katrore vendoset te vetë vendkalimi.',
+    },
+
     // ---------------- PËRPARËSIA ----------------
     {
       id: 'pe1', cat: 'perparesia',

@@ -94,7 +94,7 @@
   function nestedSign(key, cx, cy, size) {
     const s = window.SIGNS && window.SIGNS[key];
     if (!s) return '';
-    return s.svg.replace('<svg ', `<svg x="${cx - size / 2}" y="${cy - size / 2}" width="${size}" height="${size}" `);
+    return `<image href="${s.src}" x="${cx - size / 2}" y="${cy - size / 2}" width="${size}" height="${size}"/>`;
   }
 
   function trafficLight(state, cx, cy) {
@@ -120,12 +120,13 @@
     </g>`;
   }
 
-  // Tabela shtesë që tregon drejtimin e rrugës me përparësi.
-  function mainPanel(arms, main) {
-    const v = { N: [0, -1], S: [0, 1], E: [1, 0], W: [-1, 0] };
-    const line = (a, w) => `<line x1="38" y1="38" x2="${38 + v[a][0] * 26}" y2="${38 + v[a][1] * 26}" stroke="#111" stroke-width="${w}" stroke-linecap="square"/>`;
-    return `<rect x="8" y="8" width="60" height="60" rx="5" fill="#fff" stroke="#111" stroke-width="2"/>
-      ${arms.map((a) => line(a, 3)).join('')}${main.map((a) => line(a, 9)).join('')}`;
+  // Tabela shtesë zyrtare: rruga me përparësi kthehet. Origjinali tregon kthesën N–E; e rrotullojmë sipas kthesës.
+  function mainPanel(main) {
+    const key = main.slice().sort().join('');
+    const rot = { EN: 0, ES: 90, SW: 180, NW: 270 }[key];
+    if (rot === undefined || !window.SIGNS.priorityBend) return '';
+    return `<rect x="6" y="6" width="68" height="68" rx="6" fill="#fff"/>
+      <image href="${window.SIGNS.priorityBend.src}" x="10" y="10" width="60" height="60" transform="rotate(${rot} 40 40)"/>`;
   }
 
   // ---------- Kryqëzimi ----------
@@ -172,8 +173,8 @@
     }
     if (o.signs) {
       Object.entries(o.signs).forEach(([a, key]) => {
-        const [x, y] = rotPoint(o.lights && o.lights[a] ? 226 : 210, 246, ROT[a]);
-        s += nestedSign(key, x, y, 28);
+        const [x, y] = rotPoint(o.lights && o.lights[a] ? 228 : 214, 246, ROT[a]);
+        s += nestedSign(key, x, y, 34);
       });
     }
 
@@ -216,7 +217,7 @@
       s += vehicle({ ...c, blink }, x, y, rot);
     });
 
-    if (o.main) s += mainPanel(arms, o.main);
+    if (o.main) s += mainPanel(o.main);
     if (o.inset) {
       s += `<rect x="226" y="6" width="68" height="92" rx="8" fill="#fff" stroke="#999"/>
         ${policeFigure(o.inset).replace('<svg ', '<svg x="230" y="10" width="60" height="84" ')}`;
